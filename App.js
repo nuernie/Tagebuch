@@ -15,10 +15,9 @@ export default class App extends Component{
       placeholder = "Tagebuch Eintrag erstellern!"
       autoCorrect = {false}
       returnKeyType = "done"
-      onSubmitEditing = { event => this.setState({item: event.nativeEvent.text})}
+      onSubmitEditing = { text => this.setState({item: text.nativeEvent.text})}
       />
-      
-
+    
     </View>
   );
   }
