@@ -1,21 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{Component} from 'react';
+import { render } from 'react-dom';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function App() {
+
+export default class App extends Component{
+  state = {item:null};
+  render(){
   return (
     <View style={styles.container}>
-      <Text>Tagebuch App</Text>
-      <StatusBar style="auto" />
+      <Text>{this.state.item || "Keine Einträge im Tagebuch"}</Text>
+      <TextInput
+      style = {styles.input}
+      placeholder = "Tagebuch Eintrag erstellern!"
+      autoCorrect = {false}
+      returnKeyType = "done"
+      onSubmitEditing = { event => this.setState({item: event.nativeEvent.text})}
+      />
+      
+
     </View>
   );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    height : 40,
+  },
+
+
+
 });
